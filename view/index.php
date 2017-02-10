@@ -45,6 +45,8 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Start cart in aside -->
     <aside>
         <div class="ui-widget">
             <h2 class="ui-widget ui-widget-header ui-corner-top"> Your Order</h2>
@@ -55,7 +57,7 @@
                     <?php if ( ! empty($cartItems)): ?>
                     <?php foreach ($cartItems as $i => $item): ?>
                     <div class="field">
-                        <label><?php echo $item['item']->getName(); ?> [ <?php echo $item['item']->getCost(); ?> ]</label>
+                        <label><?php echo $item['item']->getName(); ?> [$<?php echo $item['item']->getCost(); ?> ]</label>
                         <br />
                         <span> Amount: </span><input type="text"  class="ui-state-default amount-box" name="amount_<?php echo $i ?>" value="<?php echo $item['amount'] ?>" disabled="disabled" />
                         <label for="remove_product_<?php echo $i ?>">Remove from cart </label>
@@ -64,7 +66,7 @@
                         <?php endforeach; ?>
                         <hr class="separator ui-state-disabled" />
                         <label>Total with tax</label>
-                        <input type="text" disabled="disabled" class="ui-state-default" value="<?php echo $cart->getTotal(); ?>" />
+                        <input type="text" disabled="disabled" class="ui-state-default" value="$<?php echo $cart->getTotal(); ?>"/>
                         <input type="submit" value="Remove checked" name="remove" />
                         <input type="submit" value="Empty cart" name="empty" />
                     <?php endif; ?>
@@ -72,6 +74,8 @@
             </form>
         </div>
     </aside>
+    <!-- End Cart -->
+
     <!-- Here we start the menu in the main-->
     <main>
         <div class="ui-widget">
@@ -80,7 +84,7 @@
                 <fieldset class="products">
                     <?php foreach ($products as $product): ?>
                         <div class="field">
-                            <label for="product_<?php echo $product->id ?>"><?php echo $product->getName() . ' - ' . $product->getCost(); echo '<br><p><span>' . $product->getDescription() . '</span></p>' ?></label>
+                            <label for="product_<?php echo $product->id ?>"><?php echo $product->getName() . ' - $' . $product->getCost(); echo '<br><p><span>' . $product->getDescription() . '</span></p>' ?></label>
                             <input type="checkbox" id="product_<?php echo $product->id; ?>" name="product_check[]" value="<?php echo $product->id ?>" />
                         </div>
                     <?php endforeach; ?>
@@ -91,6 +95,8 @@
                 </fieldset>
             </form>
         </div>
+
+        <!-- End Menu -->
 
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>

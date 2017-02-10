@@ -1,51 +1,25 @@
 <?php
 class Cart
 {
-    /**
-     * Singleton instance
-     *
-     * @var Cart
-     */
+
     protected static $_instance = NULL;
 
-    /**
-     * Cart id
-     *
-     * @var int
-     */
+
     protected $_id = NULL;
 
-    /**
-     * Array of cart items
-     *
-     * @var array
-     */
+
     protected $_items = array();
 
-    /**
-     * Array of taxes
-     *
-     * @var array
-     */
+
     protected $_tax = array();
 
-    /**
-     * Persistance object
-     *
-     * @var Persistance_Interface
-     */
+
     protected $_persistance = null;
 
-    /**
-     * Private constructor, Cart implements Singleton design pattern
-     */
+
     private function __construct() {}
 
-    /**
-     * Fetch Cart instance
-     *
-     * @return Cart
-     */
+
     public function getInstance()
     {
         if (NULL === self::$_instance) {
@@ -54,14 +28,9 @@ class Cart
 
         return self::$_instance;
     }
-    /**
-     * Add tax
-     *
-     * @param string $key tax code (eg. VAT)
-     * @param float $amount
-     * @return Cart provides fluent interface
-     * @throws Exception
-     */
+
+
+    //Add Tax
     public function addTax($key = NULL, $amount = NULL)
     {
 
@@ -77,12 +46,8 @@ class Cart
         return $this->_save();
     }
 
-    /**
-     * Add Product item to Cart
-     *
-     * @param Product_Interface $product
-     * @return Cart provides fluent interface
-     */
+
+    //Add product
     public function add(Product_Interface $product)
     {
         if (isset($this->_items[$product->id])) {
@@ -95,12 +60,8 @@ class Cart
         return $this->_save();
     }
 
-    /**
-     * Remove Product from cart
-     *
-     * @param int $productId
-     * @return Cart provides fluent interface
-     */
+
+    //Remove product
     public function remove($productId = NULL)
     {
         if (NULL === $productId) {
@@ -118,11 +79,8 @@ class Cart
         return $this->_save();
     }
 
-    /**
-     * Empty Cart
-     *
-     * @return Cart provides fluent interface
-     */
+
+    //Empty Cart
     public function removeAll()
     {
         $this->_items = array();
@@ -131,21 +89,14 @@ class Cart
     }
 
 
-    /**
-     * Fetch all Cart items
-     *
-     * @return array $items
-     */
+  //Call Cart items
     public function getAll()
     {
         return $this->_items;
     }
 
-    /**
-     * Calculate total sum of all items
-     *
-     * @return int $total
-     */
+
+    //Calculate sum
     protected function _getTotal()
     {
         $total = 0;
@@ -157,11 +108,8 @@ class Cart
         return $total;
     }
 
-    /**
-     * Calculate total sum of all items including tax
-     *
-     * @return float $totalWithTax
-     */
+
+    //Calculate sum with tax
     public function getTotal()
     {
         $total = $this->_getTotal();
@@ -175,13 +123,8 @@ class Cart
         return number_format($total, 2);
     }
 
-    /**
-     * Save current state to persistance object
-     * Method is used internally, the Cart doesn't need to be
-     * explicitly saved
-     *
-     * @return Cart provides fluent interface
-     */
+
+    //Save Current state of cart
     protected function _save()
     {
         $contents['tax'] = $this->_tax;
@@ -192,26 +135,21 @@ class Cart
 
         return $this;
     }
-    /**
-     * Load Cart contents from persistence object
-     *
-     * @return Cart provides fluent interface
-     */
+
+
+    //Load Cart contents from persistence object
     protected function _load()
     {
         $contents = $this->_persistance->load()->getContents();
 
         $this->_tax = $contents['tax'];
-        $this->_items = $content['items'];
+        $this->_items = $contents['items'];
 
         return $this;
     }
-    /**
-     * Set persistance object
-     *
-     * @param Persistance_Interface $persistance
-     * @return Cart provides fluent interface
-     */
+
+
+    //Set persistance object
     public function setPersistance(Persistance_Interface $persistance)
     {
         $this->_persistance = $persistance;
@@ -229,12 +167,9 @@ class Cart
 
         return $this;
     }
-    /**
-     * Set Cart id
-     * @param int $id
-     * @return Cart provides fluent interface
-     * @throws Exception
-     */
+
+
+    //Set cart id
     public function setId($id = NULL)
     {
         if (NULL === $id) {
@@ -249,10 +184,7 @@ class Cart
         return $this;
     }
 
-    /**
-     * Fetch id
-     * @return int Cart id
-     */
+   //Fetch ID
     public function getId()
     {
         return $this->_id;
