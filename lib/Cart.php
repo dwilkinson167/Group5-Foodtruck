@@ -36,6 +36,9 @@ class Cart
      */
     protected $_persistance = null;
 
+
+
+
     /**
      * Private constructor, Cart implements Singleton design pattern
      */

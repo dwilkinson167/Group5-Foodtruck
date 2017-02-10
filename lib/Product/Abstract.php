@@ -64,7 +64,7 @@ abstract class Product_Abstract implements Product_Interface
             throw new Exception('Name cannot be null');
         }
 
-        $this->_description = $name;
+        $this->_name = $name;
 
         return $this;
     }
