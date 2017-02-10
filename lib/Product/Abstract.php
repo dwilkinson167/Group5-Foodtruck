@@ -2,33 +2,16 @@
 include_once 'lib/Product/Interface.php';
 abstract class Product_Abstract implements Product_Interface
 {
-    /**
-     * Product description
-     * @var string
-     */
+
     protected $_description = NULL;
 
-    /**
-     * Product cost amount
-     * @var float
-     */
     protected $_cost = NULL;
-
 
     protected  $_name = NULL;
 
-    /**
-     * Product attributes describing the properties of the product
-     * @var unknown_type
-     */
     protected $_attributes = array();
 
-
-    /**
-     * Set cost
-     * @param float $cost
-     * @return Product_Abstract provides fluent interface
-     */
+    //Start Set functions
     public function setCost($cost = NULL)
     {
         if (NULL === $cost OR !is_numeric($cost)) {
@@ -40,11 +23,7 @@ abstract class Product_Abstract implements Product_Interface
         return $this;
     }
 
-    /**
-     * Set product description
-     * @param string $description
-     * @return Product_Abstract provides fluent interface
-     */
+
     public function setDescription($description = NULL)
     {
         if (NULL === $description) {
@@ -57,7 +36,6 @@ abstract class Product_Abstract implements Product_Interface
     }
 
 
-
     public function setName($name = NULL)
     {
         if (NULL === $name) {
@@ -67,19 +45,15 @@ abstract class Product_Abstract implements Product_Interface
         $this->_name = $name;
 
         return $this;
-    }
+    }#End set functions
 
-    /**
-     * @return float cost of product
-     */
+   //Start get functions
     public function getCost()
     {
         return number_format($this->_cost, 2);
     }
 
-    /**
-     * @return string product description
-     */
+
     public function getDescription()
     {
         return $this->_description;
@@ -90,11 +64,7 @@ abstract class Product_Abstract implements Product_Interface
     {
         return $this->_name;
     }
-    /**
-     * Fetch a custom attribute
-     * @param string $key attribute key
-     * @return mixed attribute value
-     */
+
     public function __get($key)
     {
         if (isset($this->_attributes[$key])) {
@@ -102,13 +72,11 @@ abstract class Product_Abstract implements Product_Interface
         } else {
             return NULL;
         }
-    }
+    }#End get functions
 
-    /**
-     * Set a custom attribute
-     * @param string $key
-     * @param mixed $value
-     */
+
+
+
     public function __set($key = NULL, $value = NULL)
     {
         if (NULL === $key OR NULL === $value) {
@@ -118,10 +86,7 @@ abstract class Product_Abstract implements Product_Interface
         $this->_attributes[$key] = $value;
     }
 
-    /**
-     * Check if an attribute with a $key is set
-     * @param string $key
-     */
+
     public function __isset($key)
     {
         switch($key) {

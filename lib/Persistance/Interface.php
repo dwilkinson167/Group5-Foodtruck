@@ -1,9 +1,5 @@
 <?php
-/**
- * Common interface for persistance objects
- * Persistance objects can use session, filesystem, database, etc.
- *
- */
+
 interface Persistance_Interface
 {
     public function load($id = NULL);
