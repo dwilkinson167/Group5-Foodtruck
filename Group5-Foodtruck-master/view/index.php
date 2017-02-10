@@ -55,7 +55,7 @@
                     <?php if ( ! empty($cartItems)): ?>
                         <?php foreach ($cartItems as $i => $item): ?>
                             <div class="field">
-                                <label><?php echo $item['item']->getName(); ?> [ <?php echo $item['item']->getCost() ?> ]</label>
+                                <label><?php echo $item['item']->getName(); ?> [ <?php echo $item['item']->getCost(); ?> ]</label>
                                 <br />
                                 <span> Amount: </span><input type="text"  class="ui-state-default amount-box" name="amount_<?php echo $i ?>" value="<?php echo $item['amount'] ?>" disabled="disabled" />
                                 <label for="remove_product_<?php echo $i ?>">Remove from cart </label>

@@ -6,7 +6,8 @@ include_once 'lib/Product/Food.php';
 include_once 'lib/Persistance/Session.php';
 $products = array();
 $food1 = new Product_Food();
-$food1->setDescription("Fig-eta bout it Burger\", \"Don't be a clown. You like figs.");
+$food1->setName("Fig-eta bout it Burger");
+$food1->setDescription("Don't be a clown. You like figs.");
 $food1->setCost(7.95);
 $products[] = $food1;
 $food2 = new Product_Food();
@@ -66,4 +67,4 @@ if (isset($_POST) && ! empty($_POST)) {
     }
 }
 // include display template
-include 'template/default.php';
+include 'view/index.php';
