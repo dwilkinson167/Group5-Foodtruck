@@ -113,7 +113,7 @@
 				All rights reserved 
 			</li>
 			<li>
-			    <a href="https://docs.google.com/document/d/1KoTekvgB7oakre9Dlk4FLH8IOYRqDxpdmMAE2Ve5P2I/edit">Design by Group 5 (Staging area)</a>
+			    <a href="https://docs.google.com/document/d/1KoTekvgB7oakre9Dlk4FLH8IOYRqDxpdmMAE2Ve5P2I/edit"> Staging area</a>
 			</li>	
         </ul>
     </footer> 
